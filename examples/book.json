@@ -1,0 +1,406 @@
+{
+  "title": "Plates from a Collection",
+  "kicker": "A working manual",
+  "subtitle": "How a folder of pictures becomes a matched set of plates, and the plates become a book.",
+  "edition": "Edition 1, 2026",
+  "author": "Renaise Kim",
+  "date": "2026-11-03",
+  "page_mm": [
+    170,
+    240
+  ],
+  "tone_scale": [
+    "#0a0a0b",
+    "#1b2230",
+    "#4a2a26",
+    "#9a4a2a",
+    "#d98f4e",
+    "#efd3a6",
+    "#fbf7ef"
+  ],
+  "prompt": "Four objects from a museum's open collection, each one photographed as a specimen on black. Make them into a short manual: what the objects are, how to ask a model for a plate, and how to keep a set of plates looking like one book.",
+  "cover": {
+    "file": "outputs/run2/00_cover.png",
+    "label": "Cover",
+    "caption": "Plate 00 from plate-book.json (run 2, seed 20261103), mapped by brightness to the seven tones at right. AI-generated."
+  },
+  "about": [
+    {
+      "head": "Collection",
+      "body": "Four museum photographs, all public domain (CC0) from The Metropolitan Museum of Art Open Access: a faience hippopotamus, a netsuke, a watch and a toy. The first three went into the workflow."
+    },
+    {
+      "head": "Plates",
+      "body": "Five plates from one run of plate-book.json on Comfy Cloud (Qwen-Image-Edit-2511, an open-weight model, Lightning 4-step, seed 20261103): a cover, one plate per object and a group plate. Every generated picture is marked AI-generated in its caption."
+    },
+    {
+      "head": "Layout",
+      "body": "Set by make_book.py from this prompt, the folder of images and a spec file. Same inputs, same book."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Collection",
+      "chapters": [
+        {
+          "title": "Four objects from one museum",
+          "dek": "The collection this book starts from.",
+          "notes": [
+            {
+              "head": "Public domain only",
+              "body": "Every object here is released CC0 by The Metropolitan Museum of Art. Check the licence before a photo goes into the folder."
+            },
+            {
+              "head": "One object per photo",
+              "body": "A single thing on a plain ground. The model keeps whatever else is in the frame, labels and rulers included."
+            },
+            {
+              "head": "Keep the museum's light",
+              "body": "Collection photos already show shape and material clearly. Do not re-light or retouch them first."
+            },
+            {
+              "head": "Write down what it is",
+              "body": "Name, place, date, accession number. The caption is also the first line of the prompt."
+            }
+          ],
+          "images": [
+            {
+              "file": "images/met_01_hippo.png",
+              "label": "Object 1",
+              "caption": "Hippopotamus (“William”), Egypt, ca. 1961–1878 B.C. Met 17.9.1. CC0."
+            },
+            {
+              "file": "images/met_02_netsuke.png",
+              "label": "Object 2",
+              "caption": "Netsuke, Japan, 18th century. Met 10.211.2273. CC0."
+            },
+            {
+              "file": "images/met_03_watch.png",
+              "label": "Object 3",
+              "caption": "Watch, ca. 1630–40, Johann Possdorfer. Met 17.190.1525. CC0."
+            },
+            {
+              "file": "images/met_04_toy.png",
+              "label": "Object 4",
+              "caption": "Toy, China, 19th century. Met 67.179.18a, b. CC0. Cropped above the museum label. Not used in the run (the workflow takes three objects).",
+              "crop": [
+                0,
+                0,
+                1,
+                0.92
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Read the object before you prompt",
+          "dek": "What to look at first, so you can ask for it by name.",
+          "notes": [
+            {
+              "head": "Shape",
+              "body": "Seated, coiled, round, flat. One word for the silhouette keeps it from drifting."
+            },
+            {
+              "head": "Material",
+              "body": "Boxwood, faience, rock crystal, silk. Name it; the model renders surfaces by their names."
+            },
+            {
+              "head": "Size",
+              "body": "Say how big it is: this netsuke fits in a palm. Without a size the model picks one."
+            },
+            {
+              "head": "What must not change",
+              "body": "List it first in the prompt: the face, the carving, the colour of the wood."
+            }
+          ],
+          "images": [
+            {
+              "file": "images/met_02_netsuke.png",
+              "label": "Object 2",
+              "caption": "Netsuke, Japan, 18th century. Carved wood, palm-sized. Met 10.211.2273. CC0."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Prompting",
+      "chapters": [
+        {
+          "title": "Six rules for a plate",
+          "dek": "Follow these for every picture in the set.",
+          "layout": "text",
+          "notes": [
+            {
+              "head": "Say what stays",
+              "body": "Begin with what must not change: the object's exact shape, colour and material."
+            },
+            {
+              "head": "One ground for the whole book",
+              "body": "Pure seamless black. Paste the same words into every prompt."
+            },
+            {
+              "head": "One light",
+              "body": "A large soft key from above left, a thin rim, no fill. Shadows stay deep and clean."
+            },
+            {
+              "head": "Fix the seed",
+              "body": "Use one seed for the set, so a change in the picture comes from a change in the words."
+            },
+            {
+              "head": "Give it a size",
+              "body": "Toy scale, palm-sized, 4 cm across. Scale words change the lens the model imagines."
+            },
+            {
+              "head": "Set the type yourself",
+              "body": "Models garble small lettering. Ask for blank panels and set every title and caption in layout, as this book does."
+            }
+          ],
+          "images": [
+            {
+              "file": "images/met_03_watch.png",
+              "label": "Object 3",
+              "caption": "Watch, ca. 1630–40. Rock crystal case, enamelled dial. Met 17.190.1525. CC0."
+            }
+          ]
+        },
+        {
+          "title": "One object per plate",
+          "dek": "A plate is made from its own object alone.",
+          "notes": [
+            {
+              "head": "What run 1 did",
+              "body": "Each object plate also took the cover as image 2, as a lighting reference. For object 3 the model copied the cover hippo into the plate instead of the watch."
+            },
+            {
+              "head": "The fix",
+              "body": "Run 2 feeds each plate only its own object. The shared House look text carries the light, ground and camera."
+            },
+            {
+              "head": "What held",
+              "body": "With one seed and one House look, the three plates still share a black ground and a soft key from above left."
+            },
+            {
+              "head": "Keep the reject",
+              "body": "The run 1 plate is kept as a record of the failure. It is not used anywhere else in this book."
+            }
+          ],
+          "images": [
+            {
+              "file": "images/met_03_watch.png",
+              "label": "Input  Object 3",
+              "caption": "Watch, as photographed. Met 17.190.1525. CC0."
+            },
+            {
+              "file": "outputs/run1_rejected/03_plate.png",
+              "label": "Run 1  Rejected",
+              "caption": "Plate 03 with the cover as image 2: the watch is gone, the hippo came back. AI-generated."
+            },
+            {
+              "file": "outputs/run2/03_plate.png",
+              "label": "Run 2  Seed 20261103",
+              "caption": "Plate 03 from the watch alone. AI-generated."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Series",
+      "chapters": [
+        {
+          "title": "A plate on black",
+          "dek": "One object, one light, nothing else in the frame.",
+          "layout": "plate",
+          "notes": [
+            {
+              "head": "Why black",
+              "body": "It drops the room. Every plate in a set can sit on the same ground, so they read as one series."
+            },
+            {
+              "head": "Leave space",
+              "body": "Ask for the object small in the frame. Cropping in later is easy; the model cannot add black it never drew."
+            },
+            {
+              "head": "Check the edges",
+              "body": "Look for halos and grey fog where the ground should be flat. Reject, do not retouch."
+            },
+            {
+              "head": "Keep the record",
+              "body": "ComfyUI writes the whole graph into each PNG. Drop one back onto the canvas to get every setting back."
+            }
+          ],
+          "images": [
+            {
+              "file": "outputs/run2/02_plate.png",
+              "label": "Plate 02  Seed 20261103",
+              "caption": "plate-book.json, run 2: the netsuke. Qwen-Image-Edit-2511, Lightning, 4 steps, CFG 1. AI-generated."
+            }
+          ]
+        },
+        {
+          "title": "Three objects, one ground",
+          "dek": "One seed and one House look across the set.",
+          "notes": [
+            {
+              "head": "Same words",
+              "body": "Every plate prompt is the plate instruction, then the House look, then the Book prompt. Only the first part changes."
+            },
+            {
+              "head": "One seed",
+              "body": "All five plates use seed 20261103, so a change in a plate comes from its words or its input."
+            },
+            {
+              "head": "What held",
+              "body": "Black ground, a soft key from above left and a deep shadow under each object carry through all three plates."
+            },
+            {
+              "head": "What varied",
+              "body": "Size: each plate keeps the shape of its input photo, scaled to the nearest preset, so the hippo is portrait, the netsuke landscape and the watch square."
+            }
+          ],
+          "images": [
+            {
+              "file": "outputs/run2/01_plate.png",
+              "label": "Plate 01",
+              "caption": "The hippo. AI-generated."
+            },
+            {
+              "file": "outputs/run2/02_plate.png",
+              "label": "Plate 02",
+              "caption": "The netsuke. AI-generated."
+            },
+            {
+              "file": "outputs/run2/03_plate.png",
+              "label": "Plate 03",
+              "caption": "The watch. AI-generated."
+            }
+          ]
+        },
+        {
+          "title": "The group plate",
+          "dek": "The three plates, set out together.",
+          "layout": "plate",
+          "notes": [
+            {
+              "head": "Plates in, not photos",
+              "body": "The group plate takes plates 01, 02 and 03 as images 1, 2 and 3, so the objects arrive already lit and cut out."
+            },
+            {
+              "head": "What held",
+              "body": "All three objects are present and recognisable: glaze pattern, carving and the enamelled dial."
+            },
+            {
+              "head": "What drifted",
+              "body": "The model added a dark tray with a curved rim. The prompt asked for objects like specimens on a museum tray, and it took the words literally."
+            },
+            {
+              "head": "Not retouched",
+              "body": "Faint white specks sit in the lower third of the black ground. They are in the raw output and were left as they are."
+            }
+          ],
+          "images": [
+            {
+              "file": "outputs/run2/04_group.png",
+              "label": "Plate 04  Seed 20261103",
+              "caption": "plate-book.json, run 2: group plate made from plates 01–03. Raw output, not retouched. AI-generated."
+            }
+          ]
+        },
+        {
+          "title": "Choosing the cover",
+          "dek": "One plate, mapped by brightness to a short scale of tones.",
+          "notes": [
+            {
+              "head": "Brightness only",
+              "body": "The plate is turned to grey, then each grey is given a colour from the scale. Hue in the original is ignored."
+            },
+            {
+              "head": "Seven tones",
+              "body": "Near-black, ink blue, oxblood, rust, amber, sand, paper. The scale is printed beside the cover so the mapping can be read."
+            },
+            {
+              "head": "Dark plates work best",
+              "body": "A specimen on black puts most of the picture in the lowest tones, so the object glows in the warm ones."
+            },
+            {
+              "head": "Change the scale",
+              "body": "Edit tone_scale in the spec. Any number of tones, darkest first."
+            }
+          ],
+          "images": [
+            {
+              "file": "outputs/run2/00_cover.png",
+              "label": "Before",
+              "caption": "Plate 00 from plate-book.json, as generated. AI-generated."
+            },
+            {
+              "file": "outputs/run2/00_cover.png",
+              "label": "After",
+              "caption": "The same picture mapped to the cover scale by make_book.py.",
+              "tone_map": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Make it",
+      "chapters": [
+        {
+          "title": "From a folder to a book",
+          "dek": "Run the workflow, then the layout script.",
+          "layout": "text",
+          "notes": [
+            {
+              "head": "Collect",
+              "body": "Put up to three object photos in ComfyUI/input as collection_01.png to collection_03.png."
+            },
+            {
+              "head": "Write the prompt",
+              "body": "One paragraph on what the book is about. It goes into the Book prompt box and onto page 2."
+            },
+            {
+              "head": "Run plate-book.json",
+              "body": "One run makes a cover plate, one plate per object and a group plate, all on black."
+            },
+            {
+              "head": "Pick",
+              "body": "Keep the plates that pass the checks in chapter 05. Run again with a new seed, or change the words, for the rest."
+            },
+            {
+              "head": "Caption",
+              "body": "Write a label and a line for each image in book.json, with its seed and source."
+            },
+            {
+              "head": "Build",
+              "body": "python scripts/make_book.py --spec book.json --images folder --out out. A PDF and spreads come out."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "colophon": [
+    {
+      "head": "Type",
+      "body": "Inter by Rasmus Andersson and IBM Plex Mono by IBM, both under the SIL Open Font License 1.1."
+    },
+    {
+      "head": "Pictures",
+      "body": "Collection photographs: The Metropolitan Museum of Art, Open Access, CC0. Generated pictures: one run of plate-book.json on Comfy Cloud, 2026-11-03, Qwen-Image-Edit-2511 with Qwen2.5-VL and the Lightning 4-step LoRA, open weights under Apache-2.0, seed 20261103; plus one rejected plate from an earlier run, marked as such. All generated pictures are AI-generated."
+    },
+    {
+      "head": "Layout",
+      "body": "make_book.py, Apache-2.0. Page 170 × 240 mm, six columns, 300 dpi. Same inputs, same file."
+    },
+    {
+      "head": "Copyright",
+      "body": "Text and layout © 2026 Renaise Kim. Licensed under Apache-2.0."
+    }
+  ],
+  "end_plate": {
+    "file": "outputs/run2/00_cover.png",
+    "label": "End"
+  }
+}
